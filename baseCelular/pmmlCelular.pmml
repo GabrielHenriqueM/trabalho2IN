@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header copyright="bl1tz">
+    <Application name="KNIME" version="5.3.2"/>
+  </Header>
+  <DataDictionary numberOfFields="5">
+    <DataField name="price" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="processor_speed" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="battery_capacity" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="ram_capacity" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+    <DataField name="internal_memory" optype="continuous" dataType="double">
+      <Interval closure="closedClosed" leftMargin="0.0" rightMargin="1.0"/>
+    </DataField>
+  </DataDictionary>
+  <ClusteringModel modelName="k-means" functionName="clustering" modelClass="centerBased" numberOfClusters="3">
+    <MiningSchema>
+      <MiningField name="price" invalidValueTreatment="asIs"/>
+      <MiningField name="processor_speed" invalidValueTreatment="asIs"/>
+      <MiningField name="battery_capacity" invalidValueTreatment="asIs"/>
+      <MiningField name="ram_capacity" invalidValueTreatment="asIs"/>
+      <MiningField name="internal_memory" invalidValueTreatment="asIs"/>
+    </MiningSchema>
+    <ComparisonMeasure kind="distance">
+      <squaredEuclidean/>
+    </ComparisonMeasure>
+    <ClusteringField field="price" compareFunction="absDiff"/>
+    <ClusteringField field="processor_speed" compareFunction="absDiff"/>
+    <ClusteringField field="battery_capacity" compareFunction="absDiff"/>
+    <ClusteringField field="ram_capacity" compareFunction="absDiff"/>
+    <ClusteringField field="internal_memory" compareFunction="absDiff"/>
+    <Cluster name="cluster_0">
+      <Array n="5" type="real">0.01901736812797728 0.31104312747571033 0.1614876415156404 0.179778286276634 0.13169691301033007 </Array>
+    </Cluster>
+    <Cluster name="cluster_1">
+      <Array n="5" type="real">0.035031037142296766 0.4669773761238257 0.15028466140647326 0.3240585799639736 0.21762884781533562 </Array>
+    </Cluster>
+    <Cluster name="cluster_2">
+      <Array n="5" type="real">0.0781902059573754 0.8914723612025328 0.147613097467703 0.4164097371159149 0.2876840989837891 </Array>
+    </Cluster>
+  </ClusteringModel>
+</PMML>
